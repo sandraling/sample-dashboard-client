@@ -1,0 +1,52 @@
+/**
+ * Account recovery page styling
+ */
+ .account-recovery-form {    
+    &__textfield {
+        margin: 20px 0;
+    }
+
+    .btn {
+        margin: 30px auto;
+    }
+}
+
+// shared 
+.account-recovery-form__container {
+    margin-top: 50px;
+}
+
+/*
+Mobile Changes
+*/
+@media (max-width: $breakpoint-mobile) {
+    .account-recovery-form {
+        width:70%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .account-recovery-form__container {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    h4.account-recovery {
+        width: 60%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+
+/*
+	Desktop Changes
+*/
+
+@media (min-width: $breakpoint-mobile + 1) {
+    .account-recovery-form {
+        width: 85%;
+    }
+}

@@ -1,0 +1,72 @@
+.MuiFormLabel-root {
+    color: #545173;
+}
+
+.MuiButton-root {
+    font-size: 1rem;
+    text-transform: none;
+}
+
+.error.MuiCheckbox-root {
+    &:not(:checked){
+        color: red;
+    }
+}
+
+.MuiOutlinedInput-input {
+    padding: 10px 14px;
+}
+
+.MuiDrawer-paper {
+    background-color: $color-primary;
+}
+
+.MuiTypography-h2 {
+    font-size: 2em;
+}
+
+.MuiTypography-h3 {
+    font-size: 1.55em;
+    color: inherit;
+    font-weight: 800;
+}
+
+.MuiTypography-h4 {
+    font-size: 1.3em;
+    color: inherit;
+}
+
+.MuiTypography-h5 {
+    font-size: 1em;
+}
+
+.MuiTypography-h6 {
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+.MuiTypography-subtitle1 {
+    font-size: 0.9em;
+    color: $color-gray;
+}
+
+.MuiTypography-body1 {
+    font-size: 0.95em;
+}
+
+.MuiTypography-caption {
+    font-size: 0.85em;
+    font-weight: 900;
+}
+
+@media (min-width: $breakpoint-mobile + 1) {
+    .MuiInput-underline:before {
+        border-bottom: 2px solid #E9E9F0;
+    }
+}
+
+@media (max-width: $breakpoint-mobile) { 
+    .MuiInput-underline:before {
+        border-bottom: 2px solid $color-quicksilver;
+    }
+}

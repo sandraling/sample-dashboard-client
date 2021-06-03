@@ -1,0 +1,217 @@
+/**
+ * Dashboard page styling
+ */
+
+.dashboard {
+    margin: auto;
+    max-width: 1500px;
+    overflow-x: hidden;
+
+    .mainTitle {
+        margin-bottom: 0.45em;
+        margin-top: 0.25em;
+    }
+
+    a {
+        color: $color-cornflowerBlue;
+    }
+
+    .legend {
+        cursor: default;
+    }
+    
+    .pieChart {
+        .highcharts-title {
+            font-size: 1.25em;
+        }
+
+        .highcharts-color-0 {
+            fill: $color-lavenderWeb;
+            stroke: none;
+        }
+        
+        .highcharts-color-1 {
+            fill: $color-accent;
+            stroke: none;
+        }
+    }
+
+    .areaChart {
+        font-size: 0.95rem;
+
+        .highcharts-axis-labels {
+            fill: $color-gray;
+        }
+
+        .highcharts-yaxis .highcharts-axis-line {
+            stroke-width: 1px;
+        }
+
+        .highcharts-grid-line, .highcharts-axis-line, .highcharts-tick {
+            stroke: $color-aliceBlue;
+        }
+
+        .highcharts-xaxis-grid .highcharts-grid-line {
+            stroke-width: 1px;
+        }
+
+        .highcharts-color-0 {
+            stroke: $color-accent;
+            fill: $color-accent;
+        }
+
+        .highcharts-color-1 {
+            stroke: $color-mayaBlue;
+            fill: $color-mayaBlue;
+        }
+
+        path.highcharts-point {
+            stroke-width: 2px;
+            fill: $color-ghostWhite;
+        } 
+
+        /* Define the stop colors */
+        #gradient-0 stop {
+            stop-color: $color-accent;
+        }
+        #gradient-0 stop[offset="0"] {
+            stop-opacity: 0.7;
+        }
+        #gradient-0 stop[offset="1"] {
+            stop-opacity: 0;
+        }
+        #gradient-1 stop {
+            stop-color: $color-mayaBlue;
+        }
+        #gradient-1 stop[offset="0"] {
+            stop-opacity: 0.7;
+        }
+        #gradient-1 stop[offset="1"] {
+            stop-opacity: 0;
+        }
+        
+        /* Apply the gradients */
+        .highcharts-color-0 .highcharts-area {
+            fill-opacity: 1;
+            fill: url(#gradient-0);
+        }
+        
+        .highcharts-color-1 .highcharts-area {
+            fill-opacity: 1;
+            fill: url(#gradient-1);
+        }
+
+        .legend-color {
+            &-0 {
+                fill: $color-accent;
+            }
+
+            &-1 {
+                fill: $color-mayaBlue;
+            }
+        }
+            
+        ul {
+            list-style-type: none;
+            padding-inline-start: 0.55em;
+            li {
+                display: inline;
+                margin-right: 2rem;
+                .text {
+                    font-size: 1.05em;
+                    text-transform: capitalize;
+                    color: $color-gray;
+                    margin-left: 0.55em;
+                }
+            }
+        }
+    }
+
+    // For postive/negative number coloring
+    .number {
+        &--positive {
+            color: $color-mediumAquamarine;
+        }
+
+        &--negative {
+            color: $color-coralRed;
+        }
+    }
+
+    &__panel {
+        padding: 20px;
+        color: $color-independence;
+
+        &--A {
+            .title {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        &--BA, &--BB, &--CA, &--CB {
+            // So that all of these cards share the same height
+            height: 92%;    
+            .innerContainer {
+                height: 100%;
+            }
+        }
+
+        &--BB {
+            .chart {
+                flex-grow: 2;
+                display: flex;
+                justify-content: space-evenly;
+                flex-direction: column;
+            }
+            .MuiDivider-root {
+                margin: 0.8em 0;
+            }
+        }
+
+        &--CA {
+            font-size: 1.1em;
+            
+            table {
+                margin: 10px 0 15px 0;
+
+                .MuiTableCell-head {
+                    line-height: 1rem;
+                    color: $color-quicksilver;
+                }
+
+                .MuiTableRow-head {
+                    background-color: $color-ghostWhite;
+                }
+            }
+
+            .link {
+                align-self: flex-start;
+            }
+        }
+    }
+}
+
+@media (max-width: $main-breakpoint-mobile) { 
+    .dashboard__panel--CA {
+        padding-left: 0;
+        padding-right: 0;
+
+        .mainTitle, button {
+            padding: 0 20px;
+        }
+
+        .MuiTableCell-root {
+            padding-left: 5px;
+            padding-right: 5px;
+            font-size: 0.7rem;
+        }
+
+        .tableCell1 {
+            padding-left: 13px;
+        }
+
+        .tableCell5 {
+            padding-right: 13px;
+        }
+    }
+}

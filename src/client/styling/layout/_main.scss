@@ -1,0 +1,210 @@
+/**
+ * Main page styling
+ */
+
+$toolbarHeight: 4rem;
+$drawerOpenedWidth: 16rem;
+$drawerClosedWidth: 3.8rem;
+$drawerTransitionSpeed: 0.25s;
+$listItemHeight: 50px;
+$listItemTransitionSpeed: 0.5s;
+
+@mixin headerText {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin: 0 10px;
+    letter-spacing: 2px;
+    line-height: 50px;
+}
+
+@mixin topbar {
+    height: $toolbarHeight;
+    display: flex;
+    align-items: center;
+}
+
+@mixin drawerTransition {
+    transition: width $drawerTransitionSpeed ease;
+}
+
+@mixin contentTransition {
+    transition: padding $drawerTransitionSpeed ease;
+}
+
+.main {
+    display: flex;
+    background-color: $color-ghostWhite;
+    min-height: 100%; 
+    
+    nav {
+        .drawer {
+            display: flex;
+            align-content: right;
+            flex-shrink: 0;
+            white-space: nowrap;
+            position: relative;
+            overflow-x: hidden;
+            
+            .Mui-selected:before {
+                content: "";
+                opacity: 1;
+                position: absolute;
+                z-index: 1;
+                width: 5px;
+                height: 100%;
+                left: 0;
+                background-color: $color-accent;
+                transition: opacity $listItemTransitionSpeed ease;
+            }
+
+            .Mui-selected, .MuiListItem-root:hover {
+                background-color: $color-primary-dark;
+
+                .MuiSvgIcon-root {
+                    color: $color-accent;
+                    transition: color $listItemTransitionSpeed ease;
+                }
+            }
+            
+            .MuiIconButton-root, a {
+                color: $color-glitter;
+            }
+            
+            .MuiListItemIcon-root {
+                min-width: 45px;
+                margin-bottom: 3px;
+                color: $color-blueBell;
+            }
+            
+            .MuiTypography-body1 {
+                font-weight: 300;
+            }
+            
+            .MuiList-padding {
+                padding: 0;
+            }
+            
+            &--opened {
+                overflow-x: hidden;
+                transition: width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms
+            }
+            
+            &--closed {
+                overflow-x: hidden;
+                transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+            }
+            
+            &__topbar {
+                @include topbar;
+                padding: 0 5px;
+                background-color: $color-primary-dark;
+                
+                &--inner {
+                    @include row;
+                    justify-content: space-between;
+                    width: 100%;
+                    
+                }
+                
+                &--text {
+                    font-weight: 500;
+                    color: $color-ghostWhite;
+                    @include headerText;
+                }
+                
+                &--closed {
+                    position: absolute;
+                    left: -9.3rem;
+                }
+            }
+        }
+    }
+    
+    .header {
+        
+        &__toolbar {
+            @include topbar;
+            align-items: center;
+            justify-content: space-between;
+
+            &--left {
+                font-weight: 700;
+                color: $color-primary-dark;
+                .title {
+                    @include headerText;
+                }
+            }
+            
+            &--right {
+                height: inherit;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                
+                .MuiDivider-vertical {
+                    margin: 0 5px;
+                    height: 70%
+                }
+            }
+        }
+    }
+
+    .content {
+        margin: $toolbarHeight auto auto auto;
+    }
+}
+
+// mobile
+@media (max-width: $main-breakpoint-mobile) { 
+    .drawer {
+        &--opened {
+            width: 100%;
+        }
+
+        &--closed {
+            width: 0;
+        }
+    }
+
+    .header {
+        &__toolbar--left .title {
+            display: none;
+        }
+    }
+
+    .content {
+        width: 100%;
+    }
+}
+
+// desktop
+@media (min-width: $main-breakpoint-mobile + 1) {
+    .drawer {
+        &--opened {
+            width: $drawerOpenedWidth;
+        }
+
+        &--closed {
+            width: $drawerClosedWidth;
+        }
+    }
+
+    .header {
+        &__toolbar--left {
+            margin-left: 3rem;            
+            .menuButton {
+                display: none;
+            }
+        }
+    }
+
+    .content {
+        &--drawerOpened {
+            max-width: calc(100% - #{$drawerOpenedWidth});
+        }
+
+        &--drawerClosed {
+            max-width: calc(100% - #{$drawerClosedWidth});
+        }
+    }
+}

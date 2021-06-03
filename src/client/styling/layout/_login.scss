@@ -1,0 +1,58 @@
+/**
+ * Login page styling
+ */
+.login-form { 
+    margin-right: auto;
+    margin-left: auto;
+
+    &__textfield {
+        margin: 10px 0;
+    }
+
+    &__error-msg {
+        color: #F50000;
+        text-align: left;
+    }
+}
+
+.login-form-row-2 {
+    justify-content: space-between;	
+    margin: 15px 0;
+}
+
+/*
+Mobile Changes
+*/
+@media (max-width: $breakpoint-mobile) {
+    .login-form {
+        width:70%;
+    }
+    
+    .login-form-row-3 {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        align-items: center;
+
+        .btn {
+            margin: 3px;
+        }
+	}
+}
+
+/*
+	Desktop Changes
+*/
+
+@media (min-width: $breakpoint-mobile + 1) {
+    .login-form {
+        width: 85%;
+    }
+	
+	.login-form-row-3 {
+		display: flex;
+		flex-direction: row;
+        justify-content: space-between;
+        margin: 0 5px;
+	}
+}

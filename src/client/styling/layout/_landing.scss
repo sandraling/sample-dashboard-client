@@ -1,0 +1,111 @@
+// shared
+.btn {
+    width: 150px;
+    text-transform: none;
+    font-weight: 400;
+}
+
+// mobile
+@media (max-width: $breakpoint-mobile) { 
+    
+    .landing {
+
+        &__cover-img--mobile {
+            height: 100%;
+            background-image: $landing-img;
+            background-position: 55% 0%;
+        }
+        
+        &__overlay--white {
+            background-color: $color-white-opacity70;
+        }
+
+        &__content--outer {
+            position: absolute;
+            width: 100%;
+            min-height: 812px;
+        }
+
+        &__content--inner {
+            width: 100%;
+        }
+        
+        &__title {
+            @mixin title {
+                position: absolute;
+                width: 100%;
+            }
+            
+            &--lo {
+                @include title;
+                top: 150px;
+            }
+            
+            &--hi {
+                position: -webkit-sticky;
+                position: sticky;
+            }
+        }
+
+        &-form__container {
+            width: 100%;
+            bottom: 0px;
+            border-radius: 10px 10px 0px 0px;
+            position: absolute;
+        }
+
+        &__tos {
+            font-size: $font-size-xs;
+            position: absolute;
+            bottom: 0;
+            width: inherit;
+            padding-bottom: 10px;
+        }
+    }
+}
+
+// desktop
+@media (min-width: $breakpoint-mobile + 1) {  
+
+    .landing {
+        
+        &__cover-img--desktop {
+            background-image: $landing-img;
+            background-size: cover;
+            flex: 7 1 auto;
+        }
+        
+        &__layout--desktop { 
+            display: flex;
+            flex-direction: row;
+        }
+        
+        &__content--outer {
+            flex: 3 1 auto;
+            min-height: 764px;
+            display: grid;
+            grid-template-columns: [marginL] 1fr [contentCol] auto [marginR] 1fr;
+            grid-template-rows: [marginT] 0.5fr [contentRow] auto;
+        }
+        
+        &__content--inner {
+            width: 430px;
+            grid-column: contentCol;
+            grid-row: contentRow;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-form__container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        &__tos {
+            font-size: $font-size-sm;
+            padding-bottom: 10px;
+        }
+    }
+}

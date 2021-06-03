@@ -1,0 +1,21 @@
+$breakpoint-mobile: 480px; // for landing page
+$main-breakpoint-mobile: 510px; // for main page
+// Optimally more breakpoints than this, 
+// but this may suffice for the scale of the project
+$landing-img: url('../../img/front_img.png');
+
+$font-size-xl: 18px;
+$font-size-lg: 16px;
+$font-size-md: 14px;
+$font-size-sm: 12px;
+$font-size-xs: 10px;
+
+@mixin row {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin column {
+    display: flex;
+    flex-direction: column;
+}
