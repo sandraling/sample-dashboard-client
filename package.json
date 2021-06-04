@@ -10,7 +10,8 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "build": "NODE_ENV='production' webpack --mode=production",
     "build-win": "SET NODE_ENV='production' && webpack --mode=production",
-    "start": "SET NODE_ENV='production' && webpack serve --mode=production"
+    "start": "NODE_ENV='production' webpack serve --mode=production",
+    "start-win": "SET NODE_ENV='production' && webpack serve --mode=production"
   },
   "babel": {
     "presets": [
