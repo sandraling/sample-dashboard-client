@@ -73,7 +73,6 @@ interface AuthContextType {
 
 declare const AUTH_URL: string;   // AUTH_URL provided by webpack plugin
 const baseUrl = AUTH_URL;
-console.log("Connection done to: " + baseUrl);
 const credentialsOpt = { withCredentials: true, credentials: 'include' };
 
 /**
