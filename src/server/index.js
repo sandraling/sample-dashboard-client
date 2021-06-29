@@ -7,9 +7,7 @@ const users = require("./routes/api/users");
 const app = express();
 const port = process.env.PORT || 7070;
 const whitelist = [
-  "http://localhost:8080",
-  "http://secure-tor-00906.herokuapp.com",
-  "https://secure-tor-00906.herokuapp.com",
+  "http://localhost:8080"
 ];
 
 // Parser middleware

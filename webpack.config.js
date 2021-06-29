@@ -78,7 +78,7 @@ module.exports = (env, argv) => {
     mode: argv.mode,
     plugins: [
       argv.mode === 'production' 
-        ? new webpack.DefinePlugin({'AUTH_URL': `"http://secure-tor-00906.herokuapp.com"`})
+        ? new webpack.DefinePlugin({'AUTH_URL': `"https://sample-dashboard-auth-server.herokuapp.com"`})
         : new webpack.DefinePlugin({'AUTH_URL': `"http://localhost:7070"`}),
       new HtmlWebpackPlugin({
         template: 'src/client/index.html'
