@@ -1,3 +1,5 @@
+import * as moment from 'moment-timezone';
+
 /**
  * Return number in abbreviated form, e.g. 1000 becomes 1K;
  * Rounded to no decimal places after abbreviating, e.g. 5678 becomes 6K.
@@ -37,4 +39,13 @@ export const numberFormatter = (
     if (currency) 
         opt = Object.assign(opt, { style: 'currency', currency });
     return new Intl.NumberFormat(locale, opt).format(amount);
+}
+
+/**
+ * Convert string describing local date to UNIX timestamp (milliseconds)
+ * @param time date string in local time format, e.g. '2012-05-20 EST'
+ * @param locale locale in momentjs accepted format
+ */
+export const convertDateToUnix = (time: string, locale: string) => {
+    return moment.tz(time.split(" ")[0], locale).valueOf();
 }

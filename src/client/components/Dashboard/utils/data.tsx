@@ -46,6 +46,8 @@ export const stockDataSource = {
   monthly: "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo"
 }
 
+export const stockDataTz = "America/New_York";
+
 export interface RawStockDataType {
   "Meta Data": any,
   [key: string]: { 

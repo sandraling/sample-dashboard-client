@@ -12,6 +12,7 @@ import {
 import * as Data from './utils/data';
 import { getMonthsAgoDate } from '../utils/dateManipulation';
 import { numberFormatter } from './utils/formatter';
+import { convertDateToUnix } from './utils/formatter';
 
 export const AreaChart = (props: {title: string, locale: string, currency: string, chartHeight?: number}) => {
     const { title, locale, currency, chartHeight } = props;
@@ -342,14 +343,14 @@ export const AreaChart = (props: {title: string, locale: string, currency: strin
     
     // Set up date for filtering data:
     // Entries older than oldestDate will not be included in result
-    const newestDate: number = Date.parse(newestDateStr);
+    const newestDate: number = convertDateToUnix(newestDateStr, Data.stockDataTz);
     const oldestDate: number = (interval === "daily") 
         ? getMonthsAgoDate(newestDate, 2) 
         : getMonthsAgoDate(newestDate, 13);
     let curDate: number;
 
     return _.transform(data, (result, value, key) => {
-        curDate = Date.parse(key + " EST");
+        curDate = convertDateToUnix(key, Data.stockDataTz);
         Object.values(value).map((value, index) => {
             result[index].data.unshift([
                 curDate,
