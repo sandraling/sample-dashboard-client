@@ -25,18 +25,16 @@ export const Login = () => {
     const formik = useFormik({
       initialValues: {
         username: '',
-        password: '',
-        rememberMe: false
+        password: ''
       },
       validationSchema: Yup.object({
         username: Yup.string()
           .required('Required'),
         password: Yup.string()
-          .required('Required'),
-        rememberMe: Yup.bool()
+          .required('Required')
       }),
-      onSubmit: ({ username, password, rememberMe }) => {
-        auth?.login(username, password, rememberMe)
+      onSubmit: ({ username, password }) => {
+        auth?.login(username, password )
           .then(success => {
             if (success === true) {
               return (
@@ -77,20 +75,6 @@ export const Login = () => {
               onChange={formik.handleChange}/>
 
             <div className='row login-form-row-2'>
-              <FormControlLabel
-                className='login-form__rmbr'
-                control={
-                  <Checkbox
-                    id='rememberMe'
-                    className={formik.touched.rememberMe 
-                      && formik.errors.rememberMe
-                      ? 'error'
-                      : ''}
-                    {...formik.getFieldProps('rememberMe')}
-                    color="primary"/>
-                }
-                label="Remember me"
-              />
               <Link to='account-recovery'>
                 <p>Forgot password</p>
               </Link>

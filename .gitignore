@@ -83,7 +83,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+dist/*
 
 # Gatsby files
 .cache/
@@ -105,3 +105,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Except the _redirect file for Netlify hosting
+!dist/_redirects

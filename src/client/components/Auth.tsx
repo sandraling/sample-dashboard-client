@@ -63,7 +63,7 @@ interface AccInfoResponse extends VerifyResponse {
 
 interface AuthContextType {
   user: AuthData;
-  login: (username: string, password: string, rmbrMe: boolean) => Promise<boolean>; 
+  login: (username: string, password: string ) => Promise<boolean>; 
   logout: () => void; 
   register: (registerData: RegisterData) => Promise<{success: boolean, error?: RegisterErrors}>;
   verify: () => Promise<boolean>;
@@ -89,17 +89,14 @@ export const AuthProvider = (props: NodeWrapperProp) => {
     loggedIn: false,
     data: null
   });
-  const [rmbrMe, setRmbrMe] = React.useState<boolean>(false);
 
   /**
    * Login via server side
    * @param {string} username
    * @param {string} password 
-   * @param {boolean} rmbrMe 
    * @return {UserData | null} User data on successful login; null otherwise
    */
-  const login = (username: string, password: string, rmbrMe: boolean) => {
-    setRmbrMe(rmbrMe);
+  const login = (username: string, password: string) => {
     return axios
       .post<LoginResponse>(baseUrl + "/api/users/login", { username, password }, credentialsOpt)
       .then(({ data }) => {
@@ -156,7 +153,7 @@ export const AuthProvider = (props: NodeWrapperProp) => {
    * On success, update session user data accordingly; 
    * Else, remove jwt token and clear user data.
    */
-  const verify = () => {
+  const verify: () => Promise<boolean> = () => {
     return axios
       .post<AccInfoResponse>(baseUrl + "/api/users/verify", null, credentialsOpt)
       .then(({ data }) => {
@@ -171,14 +168,13 @@ export const AuthProvider = (props: NodeWrapperProp) => {
             }
           });
         } else {
-          // Remove outdated or invalid token on failure
-          setUser({
-            loggedIn: false,
-            data: null
-          });
           logout();
         }
         return data.success;
+      })
+      .catch((e) => {
+        logout();
+        return false;
       });
   };
 
@@ -215,12 +211,6 @@ export const AuthProvider = (props: NodeWrapperProp) => {
     // Verify our login session if we have a login token but no user data
     if (user.loggedIn === false) {
       verify();
-    }
-
-    return () => {
-      if (rmbrMe === false) {
-        logout();
-      }
     }
   }, []);
 

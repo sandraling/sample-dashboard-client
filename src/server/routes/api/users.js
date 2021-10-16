@@ -23,13 +23,14 @@ const getExpiryDate = () => {
 
 // Default auth cookie options
 const cookieName = "auth";
+const cookiePath = "/";
 const cookieOpt = {
-    sameSite: 'strict',
-    path: '/',
+    sameSite: 'None',
+    secure: true, // https-enabled website only (unless localhost)
+    path: cookiePath,
     expires: getExpiryDate(), // one month from now
     maxAge: 60 * 60 * 24 * 30, // 30 days
-    httpOnly: true,
-    secure: true 
+    httpOnly: true, // deny client-side cookie access
 };
 
 /**
@@ -193,8 +194,7 @@ router.post("/login", (req, res) => {
         return res.json(errors);
     }
 
-    const username = req.body.username;
-    const password = req.body.password;
+    const { username, password } = req.body;
 
     // Find user by username
     User.findOne({ username }).then(user => {
@@ -236,7 +236,7 @@ router.post("/login", (req, res) => {
  * Route handler for POST api/users/logout
  * For logout use.
  */
-router.post("/logout", (_, res) => {
+router.post("/logout", (req, res) => {
     return res
         .clearCookie(cookieName)
         .json({

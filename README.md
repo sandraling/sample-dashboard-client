@@ -1,8 +1,12 @@
 # Sample Dashboard
 A responsive demo dashboard resulted from a few design images made reality. 
 
+## Accessing the Hosted Version
+Visit `https://zen-williams-175346.netlify.app/`
+
 ## Running it Locally
-`npm run start` and open on localhost:8080 
+1. Create a `.env` file with `MONGO_URI` and `SECRET_KEY` populated by your own mongoDB
+2. `npm run dev` and open on localhost:8080 
 
 ## Features
 - A working registration and login;
@@ -20,7 +24,6 @@ A responsive demo dashboard resulted from a few design images made reality.
 - MongoDB
 ... and more! 
 
-## Notable Limitations
-- Password recovery is just for looks;
-- Charts do not show up on Mozilla Firefox;
-- None of your usual cookie usage warning!
+## Personal Comments
+Login data is pulled from a database, and the areacharts are populated by a stock website's API. See https://www.alphavantage.co/
+Other than that, everything else is placeholder data.

@@ -81,7 +81,8 @@ module.exports = (env, argv) => {
         ? new webpack.DefinePlugin({'AUTH_URL': `"https://sample-dashboard-auth-server.herokuapp.com"`})
         : new webpack.DefinePlugin({'AUTH_URL': `"http://localhost:7070"`}),
       new HtmlWebpackPlugin({
-        template: 'src/client/index.html'
+        template: 'src/client/index.html',
+        favicon: 'img/favicon.ico'
       })
     ],
     devServer: {
