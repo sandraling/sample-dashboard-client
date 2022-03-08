@@ -2,7 +2,7 @@
 A responsive demo dashboard resulted from a few design images made reality. 
 
 ## Accessing the Hosted Version
-Visit `https://zen-williams-175346.netlify.app/`
+Visit https://zen-williams-175346.netlify.app/
 
 ## Running it Locally
 1. Create a `.env` file with `MONGO_URI` and `SECRET_KEY` populated by your own mongoDB
