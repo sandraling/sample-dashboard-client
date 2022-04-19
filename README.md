@@ -13,10 +13,11 @@ Visit https://zen-williams-175346.netlify.app/
 - A dashboard displaying multiple statistics.
 
 ## What is Used?
+- React
 - Typescript
 - Sass
 - JWT
-- Recharts
+- ~Recharts~ Highcharts
 - Material UI
 - axios
 - formik & yup
@@ -27,3 +28,6 @@ Visit https://zen-williams-175346.netlify.app/
 ## Personal Comments
 Login data is pulled from a database, and the areacharts are populated by a stock website's API. See https://www.alphavantage.co/
 Other than that, everything else is placeholder data.
+
+## Disclaimer
+This is a learning project. It is not being actively updated. Password creation is deliberately made restriction free, so feel free to use a simple password just to check out the project!
